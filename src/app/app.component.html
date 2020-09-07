@@ -3,7 +3,7 @@
 
   <div class="mat-card">
     <div class="mat-card-title">
-      <div style="text-align: center">
+      <div style="text-align: center; padding: 1em">
         Unit Testing for Beginners!
       </div>
 
@@ -23,13 +23,19 @@
           <mat-label>Input 3</mat-label>
           <input matInput formControlName="item3" [(ngModel)]="this.item3" [value]="this.item3">
         </mat-form-field>
+        <div class="flex-container">
+          <div class="mat-button" (click)="convertToNumbersAndCalculate()">
+            <button mat-button>
+              Calculate Total
+            </button>
+          </div>
+          <div style="padding-top: 0.5em">
+            {{totalPrice | currency }}
+          </div>
+        </div>
 
       </div>
-      <div class="mat-button" (click)="convertToNumbersAndCalculate()">
-        <button mat-button>
-          Calculate Total:   ${{totalPrice}}
-        </button>
-      </div>
+
     </div>
 
   </div>
