@@ -1,13 +1,24 @@
-import { TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let appFixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
     }).compileComponents();
+    appFixture = TestBed.createComponent(AppComponent);
+    component = appFixture.componentInstance;
+    appFixture.detectChanges();
+  });
+
+
+  beforeEach(() => {
+
   });
 
   it('should create the app', () => {
@@ -27,5 +38,9 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('.content span').textContent).toContain('unit-testing-cbt app is running!');
+  });
+
+  it('should calculate the total and add sales tax.', () => {
+    expect(component.calculateTotalWithTax(1.06, 4, 4, 4)).toBe(12.72);
   });
 });
